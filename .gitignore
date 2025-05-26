@@ -6,3 +6,5 @@ __pycache__/
 *.pyc
 # vs code
 .vscode/
+# db
+*.db
