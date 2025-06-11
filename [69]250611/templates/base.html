@@ -1,0 +1,19 @@
+<!-- 공통 템플릿 역할을 하는 html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 변경될 부분 -->
+    <title>{% block title %} {% endblock %}</title>
+    <link href="{{ url_for('static', filename='index.css')}}" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <!-- 변경될 부분 -->
+        {% block content %} 포트폴리오 {% endblock %}
+    </div>
+    
+</body>
+</html>
