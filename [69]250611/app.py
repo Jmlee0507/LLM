@@ -1,8 +1,20 @@
 from flask import Flask, render_template, request, redirect, url_for, session
+import sqlite3
 
 # 객체 생성
 app = Flask(__name__)
 app.secret_key = 'secret key'
+
+def save_messages(name, email, message):
+    conn = sqlite3.connect('contact.db')
+    c = conn.cursor()
+    c.execute('''
+        insert into messages(name, email, message)
+        values(?,?,?)
+    ''', (name, email, message)
+    )
+    conn.commit()
+    conn.close()
 
 @app.route('/')
 def index():
@@ -22,6 +34,9 @@ def contact():
         name = request.form.get('name')
         email = request.form.get('email')
         message = request.form.get('message')
+
+        save_messages(name, email, message)
+
         print(f'제출된 데이터 이름: {name} 이메일: {email} 메시지: {message}')
         # 리다이렉트 success 표시
         session['success'] = True
