@@ -11,7 +11,7 @@ class UserResponse(BaseModel):
 
     # ORM 객체를 직렬화할 수 있도록 ==> DB에서 가져온 객체를 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 #상품 등록 데이터객체
 class ProductCreate(BaseModel):
@@ -22,16 +22,20 @@ class ProductOut(BaseModel):
     name: str
     price: int
     class Config: # 객체로 리턴할 때
-        orm_mode = True
+        from_attributes = True
 
 class CartItem(BaseModel):
     user_id: int
     product_id: int
     quantity: int
+
+class OrderRequest(BaseModel):
+    user_id: int
+
 class OrderOut(BaseModel):
     id: int
     user_id: int    
     product_id: int
     quantity: int
     class Config:   # 객체로 리턴할때
-        orm_mode = True     
+        from_attributes = True     
