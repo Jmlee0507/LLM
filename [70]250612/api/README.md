@@ -20,6 +20,11 @@
 pip install fastapi uvicorn sqlalchemy
 ```
 
+# 실행 코드
+```
+uvicorn main:app --reload
+```
+
 # 통신 및 응답 규약
 
 | 항목       | 내용 |
