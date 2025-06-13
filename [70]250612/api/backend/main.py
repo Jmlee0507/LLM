@@ -24,6 +24,11 @@ class RegisterRequest(BaseModel):
     email: str
     password: str
 
+# 메인 경로
+from flask import Flask, render_template
+@app.get('/')
+def main():
+
 # 라우터(요청에 응답하는)
 @app.post('/api/register')
 def register_user(user: RegisterRequest, db: Session=Depends(get_db)):
@@ -130,3 +135,5 @@ def place_order(order: OrderRequest, db:Session=Depends(get_db)):
 def get_orders(user_id:int = Query(...), db:Session=Depends(get_db)):
     orders = db.query(Order).filter(Order.user_id == user_id).all()
     return orders
+
+# 정적 HTML 파일 서버 

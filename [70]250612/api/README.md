@@ -34,3 +34,8 @@ uvicorn main:app --reload
 | **성공 응답 포맷** | `{ "success": true, "data": ... }` |
 | **에러 응답 포맷** | `{ "success": false, "error": "에러 메시지" }` |
 | **에러 처리 방식** | 모든 에러는 위 통일된 에러 응답 포맷 사용 |
+
+# Fast API로 구현한 API와 HTML을 연결하려면
+```
+main.py가 실행 중인 폴더의 하위에 templates 폴더를 만들고 html파일을 저장한다
+```
