@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body>
+    <h2>로그인</h2>
+    <form id="loginform">
+        <input type="text" name="username" placeholder="이름" required>
+        <input type="password" name="password" required>
+        <button type="submit">로그인</button>
+    </form>
+</body>
+<script>
+    document.getElementById('loginform').addEventListener('submit',
+        async function(e){
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = {
+                username: $('input[type="username"]').val(),
+                password: $('input[type="password"]').val()
+            };
+            $.ajax({
+                url: 'http://localhost:8000/api/login',
+                type: 'post',
+                contentType: 'application/json',
+                data : JSON.stringify(data),
+                success: function(e){
+                    alert(e.message);
+                },
+                error:function(e){                    
+                    alert("로그인 실패")
+                }
+            })
+        }
+    )
+</script>
+</html>
