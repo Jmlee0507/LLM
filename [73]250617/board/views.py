@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 from django.http import HttpResponse
 from .models import Question, Answer
 
@@ -12,3 +12,17 @@ def detail(request, question_id):
     # question = Question.objects.get(id=question_id)
     question = get_object_or_404(Question, id=question_id)
     return render(request, 'board/detail.html', {'question':question}) 
+
+def create_answer(request, question_id):
+    question = get_object_or_404(Question, id=question_id) # 주어진 Id로 조회
+    Answer(question=question, #answer의 question은 FK이기 때문에 알아서 question의 id가 들어감
+           content = request.POST.get('content')).save()
+    return redirect('board:question_detail', question_id=question.id)
+
+def create_question(request):
+    if request.method == 'POST':
+        subject = request.POST.get('subject')
+        content = request.POST.get('content')
+        Question(subject=subject, content=content).save()
+        return redirect('board:question_list')
+    return render(request, 'board/create_question.html')
