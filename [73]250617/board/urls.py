@@ -12,5 +12,7 @@ urlpatterns = [
     path('<int:question_id>/', views.detail, name='question_detail'), # 질문 상세 페이지 URL 
     path('ask/create/<int:question_id>/', 
          views.create_answer, name='create_answer'),
-    path('question/create/', views.create_question, name='question_create')
+    path('question/create/', views.create_question, name='create_question'),
+    # 임시
+    path('test/', views.test, name='text')
 ]
