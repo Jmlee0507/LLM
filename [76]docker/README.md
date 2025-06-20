@@ -89,3 +89,13 @@ docker stop <CONTAINER ID>
 ```
 
 ### 🐳 Docker Desktop을 이용해 시각적으로 컨테이너 및 이미지 확인 가능
+
+### 기존 존재하는 이미지를 컨테이너에서 실행
+```bash
+docker run -d -it ubuntu:16.04
+```
+
+### 컨테이너 내부 접속
+```bash
+docker exec -it <CONTAINER ID OR NAME> /bin/bash
+```
