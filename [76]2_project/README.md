@@ -77,5 +77,3 @@ docker-compose run web python manage.py makemigrations
 docker-compose run web python manage.py migrate
 docker-compose up
 ```
-
-### 9. clone 후 docker-compose
