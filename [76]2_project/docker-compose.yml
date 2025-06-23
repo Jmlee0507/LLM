@@ -1,3 +1,5 @@
+# Django와 PostreSQL을 사용한 웹 애플리케이션을 위한 Docker Compose 설정
+version: '3.8'
 services:
   db:
     image: postgres:15
@@ -9,12 +11,9 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
   web:
-    build: .
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/app
+    image: sknetworks/my-django-app:latest
+    command: python manage.py runserver 0.0.0.0:8000    
     ports:
       - "8000:8000"
     depends_on:
@@ -24,6 +23,5 @@ services:
       - DJANGO_DB_NAME=mydb
       - DJANGO_DB_USER=myuser
       - DJANGO_DB_PASSWORD=mypassword
-
 volumes:
-  postgres_data:
+  postgres_data:    
