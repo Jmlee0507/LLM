@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href = "{% static 'css/style.css' %}">
+    <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+    <title>new</title>
+</head>
+<body>
+    <h1>create new content</h1>
+    <form method="post">
+        {% csrf_token %} <!-- 무조건 있어야함 -->
+        <p>
+            <input type="text" name="title" placeholder="제목">
+        </p>
+        <p>
+            <textarea name="content" placeholder="내용"></textarea>
+        </p>
+        <button type="submit">등록</button>
+    </form>
+</body>
+</html>
